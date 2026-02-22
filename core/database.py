@@ -1,9 +1,7 @@
-# core/database.py
 import os
 import sqlalchemy
 from dotenv import load_dotenv
 
-# Cargamos las variables de entorno
 load_dotenv()
 
 def get_db_engine():
@@ -21,14 +19,12 @@ def get_db_engine():
         print("Advertencia: Faltan credenciales en el archivo .env. Funcionalidades de DB limitadas.")
         return None
 
-    # Construcción de la URL de conexión
     DB_URL = f"mysql+pymysql://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
 
     try:
         # pool_pre_ping=True verifica que la conexión esté viva antes de cada consulta
         engine = sqlalchemy.create_engine(DB_URL, pool_pre_ping=True)
         
-        # Test de conexión rápido
         with engine.connect() as conn:
             pass 
             
@@ -39,5 +35,4 @@ def get_db_engine():
         print(f"Advertencia: Sin conexión. Funcionalidades limitadas. Detalle del error: {e}")
         return None
 
-# Instancia global exportable
 engine = get_db_engine()
