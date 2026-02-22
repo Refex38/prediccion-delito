@@ -14,6 +14,3 @@ __pycache__/
 *.pdf
 *.xlsx
 *.csv
-
-app_copy.py
-app2.py
