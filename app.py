@@ -1,7 +1,5 @@
-# app.py
 import gradio as gr
 
-# Importamos las funciones y variables necesarias de nuestros servicios
 from services.ml_service import predecir_mapa_calor, reentrenar_modelo_slp, encoders
 from services.data_service import subir_csv_slp, guardar_manual_slp
 from services.report_service import generar_reporte_slp
@@ -111,7 +109,6 @@ with gr.Blocks(title="Predicción del delito SLP") as demo:
 
             out_file = gr.File(label="Archivo Generado")
             
-            # Usamos funciones lambda para pasar el parámetro de formato
             btn_rep_xlsx.click(lambda: generar_reporte_slp("xlsx"), outputs=out_file)
             btn_rep_pdf.click(lambda: generar_reporte_slp("pdf"), outputs=out_file)
 
